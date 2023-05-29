@@ -4,6 +4,7 @@
     <p>Please verify that you are not a robot:</p>
     <button @click="verifyCaptcha">Verify</button>
     <button :disabled="!verified" @click="goToTimeline">Go to Timeline</button>
+    <ventiqo-button>Log-in with Google</ventiqo-button>
   </div>
 </template>
 
@@ -11,8 +12,12 @@
 import { ref } from 'vue';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import axios from 'axios';
+import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
 
 export default {
+  components: {
+    VentiqoButton,
+  },
   setup() {
     const commonPath = 'http://localhost:3000';
     const verified = ref(false);

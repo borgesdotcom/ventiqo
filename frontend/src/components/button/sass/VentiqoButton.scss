@@ -1,0 +1,16 @@
+.btn {
+    cursor: pointer !important;
+    padding: 1rem 2rem !important;
+    border-radius: .625rem !important;
+    text-align: center !important;
+    border: 0 !important;
+
+    &:hover{
+        background: $yellow-1;
+    }
+
+    &-default {
+        background: $yellow-2;
+        color: $white-1;
+    }
+}
