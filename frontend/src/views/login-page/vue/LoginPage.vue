@@ -1,4 +1,5 @@
 <template>
+  <div class="home" :class="theme">
   <div class="home">
     <login-cotainer>
       <ventiqo-button
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import axios from 'axios';
 import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
@@ -32,9 +33,11 @@ export default {
     LoginCotainer,
   },
   setup() {
+    const theme = inject('theme')
     const commonPath = 'http://localhost:3000';
     const verified = ref(false);
     const { executeRecaptcha } = useReCaptcha();
+    
 
     const verifyCaptcha = async () => {
       const token = await executeRecaptcha('homepage');
@@ -51,7 +54,7 @@ export default {
       }
     };
 
-    const goToTimeline = () => {
+    const testeButton = () => {
       if (verified.value) {
         console.log('ENTROU');
       }
@@ -60,7 +63,8 @@ export default {
     return {
       verified,
       verifyCaptcha,
-      goToTimeline
+      testeButton,
+      theme
     };
   },
 };
