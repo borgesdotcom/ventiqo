@@ -1,6 +1,5 @@
 <template>
   <div class="home" :class="theme">
-  <div class="home">
     <login-cotainer>
       <ventiqo-button
         class="button-google"
