@@ -1,9 +1,20 @@
 <template>
   <div class="home">
-    <h1>Welcome to My App</h1>
+    <h1>Welcome to ventiqo</h1>
     <p>Please verify that you are not a robot:</p>
     <button @click="verifyCaptcha">Verify</button>
     <button :disabled="!verified" @click="goToTimeline">Go to Timeline</button>
+    <ventiqo-button
+      class="button-google"
+    >
+      Log-in with Google
+    </ventiqo-button>
+    <ventiqo-button
+      @click="TesteButton"
+      class="button-login"
+    >
+      Log In
+    </ventiqo-button>
   </div>
 </template>
 
@@ -11,8 +22,12 @@
 import { ref } from 'vue';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import axios from 'axios';
+import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
 
 export default {
+  components: {
+    VentiqoButton,
+  },
   setup() {
     const commonPath = 'http://localhost:3000';
     const verified = ref(false);
@@ -47,3 +62,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '../sass/LoginPage.scss';
+</style>

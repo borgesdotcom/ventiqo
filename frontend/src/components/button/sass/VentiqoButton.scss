@@ -1,0 +1,20 @@
+.btn {
+    cursor: pointer !important;
+    padding: 1rem 2rem !important;
+    border-radius: .625rem !important;
+    text-align: center !important;
+    border: .1875rem solid $yellow-1 !important;
+    font-size: 1rem !important;
+    font-weight: 600;
+    transition: all 0.3s ease-out !important;
+
+    &:hover{
+        border: $orange-1 .1875rem solid !important;
+        background-color: rgba(30, 32, 39, 0.5);
+    }
+
+    &-default {
+        background: transparent;
+        color: $white-1;
+    }
+}
