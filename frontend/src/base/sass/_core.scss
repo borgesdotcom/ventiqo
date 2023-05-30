@@ -1,1 +1,6 @@
-@import 'globals'
+@import 'globals';
+@import 'typography/fonts';
+
+body {
+  background: $black-1;
+}

@@ -1,10 +1,20 @@
 <template>
   <div class="home">
-    <h1>Welcome to My App</h1>
+    <h1>Welcome to ventiqo</h1>
     <p>Please verify that you are not a robot:</p>
     <button @click="verifyCaptcha">Verify</button>
     <button :disabled="!verified" @click="goToTimeline">Go to Timeline</button>
-    <ventiqo-button>Log-in with Google</ventiqo-button>
+    <ventiqo-button
+      class="button-google"
+    >
+      Log-in with Google
+    </ventiqo-button>
+    <ventiqo-button
+      @click="TesteButton"
+      class="button-login"
+    >
+      Log In
+    </ventiqo-button>
   </div>
 </template>
 
@@ -52,3 +62,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '../sass/LoginPage.scss';
+</style>

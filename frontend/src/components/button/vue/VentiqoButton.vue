@@ -1,8 +1,8 @@
 <template>
     <button
-        :type="buttonType"
-        :class="['btn', classStyled]"
-        @click="onClickButton"
+      :type="buttonType"
+      :class="['btn', classStyled]"
+      @click="onClickButton"
     >
         <slot />
     </button>
@@ -40,5 +40,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../sass/VentiqoButton.scss'
+@import '../sass/VentiqoButton.scss';
 </style>
