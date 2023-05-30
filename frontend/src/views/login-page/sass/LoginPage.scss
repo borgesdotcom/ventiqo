@@ -1,8 +1,8 @@
+.home{
+  color: $white-1;
+}
+
 .light {
-  .home{
-    color: $white-1;
-  }
-  
   .button-google {
     width: 20rem;
   }
@@ -19,11 +19,7 @@
   }
 }
 
-.dark {
-  .home{
-    color: $white-1;
-  }
-  
+.dark { 
   .button-google {
     width: 20rem;
   }
