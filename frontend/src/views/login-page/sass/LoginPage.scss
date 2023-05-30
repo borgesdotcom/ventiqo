@@ -1,18 +1,41 @@
-.home{
-  color: $white-1;
+.light {
+  .home{
+    color: $white-1;
+  }
+  
+  .button-google {
+    width: 20rem;
+  }
+  
+  .button-login {
+    border: 0 !important;
+    background: linear-gradient(to right, $orange-1, $yellow-3);
+    line-height: 1.625rem;
+    width: 20rem;
+  
+    &:hover {
+      transform: translate3d(0, -5%, 0);
+    }
+  }
 }
 
-.button-google {
-  width: 20rem;
-}
-
-.button-login {
-  border: 0 !important;
-  background: linear-gradient(to right, $orange-1, $yellow-2);
-  line-height: 1.625rem;
-  width: 20rem;
-
-  &:hover {
-    transform: translate3d(0, -5%, 0);
+.dark {
+  .home{
+    color: $white-1;
+  }
+  
+  .button-google {
+    width: 20rem;
+  }
+  
+  .button-login {
+    border: 0 !important;
+    background: linear-gradient(to right, $orange-1, $yellow-2);
+    line-height: 1.625rem;
+    width: 20rem;
+  
+    &:hover {
+      transform: translate3d(0, -5%, 0);
+    }
   }
 }

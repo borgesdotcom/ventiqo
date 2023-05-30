@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="theme">
     <h1>Welcome to ventiqo</h1>
     <p>Please verify that you are not a robot:</p>
     <button @click="verifyCaptcha">Verify</button>
@@ -10,7 +10,7 @@
       Log-in with Google
     </ventiqo-button>
     <ventiqo-button
-      @click="TesteButton"
+      @click="testeButton"
       class="button-login"
     >
       Log In
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import axios from 'axios';
 import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
@@ -29,9 +29,11 @@ export default {
     VentiqoButton,
   },
   setup() {
+    const theme = inject('theme')
     const commonPath = 'http://localhost:3000';
     const verified = ref(false);
     const { executeRecaptcha } = useReCaptcha();
+    
 
     const verifyCaptcha = async () => {
       const token = await executeRecaptcha('homepage');
@@ -48,7 +50,7 @@ export default {
       }
     };
 
-    const goToTimeline = () => {
+    const testeButton = () => {
       if (verified.value) {
         console.log('ENTROU');
       }
@@ -57,7 +59,8 @@ export default {
     return {
       verified,
       verifyCaptcha,
-      goToTimeline
+      testeButton,
+      theme
     };
   },
 };
