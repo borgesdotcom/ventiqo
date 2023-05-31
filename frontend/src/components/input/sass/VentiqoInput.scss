@@ -1,0 +1,132 @@
+@mixin validate-colors() {
+  &.invalid {
+    color: $red-1;
+  }
+
+  &.valid {
+    color: $green-1;
+  }
+}
+
+@mixin is-focused() {
+  color: $gray-2;
+  font-weight: 400;
+  font-size: 1.25rem;
+
+  @include validate-colors();
+}
+
+@mixin input-style() {
+  position: relative;
+  display: inline-block;
+  width: calc(100% - 3rem);
+  background: transparent;
+  border-radius: 1.875rem;
+  font-size: 1.25rem;
+  border: none !important;
+  outline: none !important;
+  color: $white-1;
+}
+
+.ventiqo {
+  position: relative;
+
+  &-input {
+    position: relative;
+    display: inline-block;
+    padding: 1.175rem 1.175rem;
+    border: 0.0625rem solid $gray-1;
+    border-radius: 1.875rem;
+    width: calc(100% - 3rem);
+
+    &.disabled {
+      background: rgba(30, 32, 39, 0.5);
+      color:  $gray-1;
+    }
+
+    &.has-content {
+      .ventiqo-input-label {
+        @include is-focused();
+      }
+    }
+
+    input {
+      @include input-style();
+      caret-color: $yellow-1;
+
+      &[type="password"] {
+        -webkit-text-security: disc;
+        letter-spacing: 0.1875rem;
+        color: $yellow-1;
+      }
+
+      &:focus {
+        outline: none !important;
+      }
+    }
+
+    &.invalid {
+      input {
+        border-bottom: 0.125rem solid $red-1;
+      }
+
+      .ventiqo-input-label {
+        color: $red-1;
+      }
+    }
+
+    &.valid {
+      input {
+        border-bottom: 0.125rem solid $green-1;
+      }
+
+      .ventiqo-input-label {
+        color: $gray-1;
+      }
+    }
+
+    &-field {
+      display: block;
+      width: calc(100% - 3rem);
+      height: calc(100% - 2.5rem);
+      border-width: 0;
+      background-color: transparent;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-align: left;
+
+      &:focus {
+        +.ventiqo-input-label {
+          @include is-focused()
+        }
+      }
+    }
+
+    &-label {
+      position: absolute;
+      top: -12px;
+      left: 1.875rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-align: left;
+      transition: all 0.3s ease;
+      background: $black-1;
+      line-height: 25px;
+    }
+
+    &-alert-msg {
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+
+      &.invalid {
+        margin: 0.5rem 0 0 1.5rem;
+      }
+
+      @include validate-colors();
+    }
+  }
+}
