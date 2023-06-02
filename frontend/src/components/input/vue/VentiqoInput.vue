@@ -6,10 +6,10 @@
         'ventiqo-input',
         type,
         {
-          'has-content': value,
-          disabled: disabled,
           valid: validClass,
           invalid: invalidClass,
+          'has-content': value,
+          disabled: disabled,
         },
       ]"
     >
@@ -19,6 +19,7 @@
         :value="value"
         class="ventiqo-input-field"
         :type="type"
+        :placeholder="placeholder"
         :required="required"
         :disabled="disabled"
         :autocomplete="autocomplete"
@@ -38,9 +39,35 @@
       >
         {{ label }}
       </div>
+      <div
+        class="ventiqo-input__icon"
+        @click="$emit('clear')"
+        @keyup.esc="$emit('clear')"
+      >
+        <span
+          v-if="iconValidation"
+          class="ventiqo-icon"
+          aria-hidden="true"
+        >
+          <i
+            :class="valid ? 'icon-done' : 'icon-warning'"
+          />
+        </span>
+
+        <span
+          v-if="closeButton && disabled === false && value != '' && clearButton != false"
+          class="ventiqo-icon"
+          aria-hidden="true"
+        >
+          <i
+            :class="'icon-close'"
+          />
+        </span>
+
+      </div>
     </label>
     <div
-      v-if="valid != null && disabled === false"
+      v-if="valid != null && closeButton === false && disabled === false"
       :id="idAlertLabel"
       role="alert"
       :class="['ventiqo-input-alert-msg',
@@ -109,10 +136,20 @@ export default {
       type: Boolean,
       default: false,
     },
+    clearButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      closeButton: false,
+      showMsg: false,
+    }
   },
   computed: {
     msgAlertValidation() {
-      if (this.valid === true && this.msgAlertValid) {
+      if (this.valid === true && this.msgAlertValid && this.closeButton === false) {
         return this.msgAlertValid
       }
 
@@ -120,6 +157,7 @@ export default {
         this.valid === false
         && this.msgAlertInvalid
         && this.value !== ''
+        && this.closeButton === false
       ) {
         return this.msgAlertInvalid
       }
@@ -129,10 +167,21 @@ export default {
         && this.required === true
         && this.msgRequiredAlert
         && this.value === ''
+        && this.closeButton === false
       ) {
         return this.msgRequiredAlert
       }
       return undefined
+    },
+    iconValidation() {
+      return (
+        (this.required === true
+         || (this.required === false && this.value !== ''))
+        && (this.pattern || (this.required && this.value !== 'SN'))
+        && (this.valid === false || this.valid === true)
+        && this.closeButton === false
+        && this.disabled === false
+      )
     },
     invalidClass() {
       return (
@@ -140,6 +189,7 @@ export default {
          || (this.required === false && this.value !== ''))
         && this.valid != null
         && !this.valid
+        && this.closeButton === false
         && this.disabled === false
       )
     },
@@ -148,6 +198,7 @@ export default {
         (this.required === true
          || (this.required === false && this.value !== ''))
         && this.valid
+        && this.closeButton === false
         && this.disabled === false
       )
     },
@@ -158,17 +209,24 @@ export default {
   watch: {
     value() {
       if (this.resetValidation === false) {
-        if (this.disabled === false) {
-          const regex = new RegExp(this.pattern)
-          const regexValidation = regex.test(this.value)
-          this.$emit('update:valid', regexValidation)
-          return regexValidation
+        if (this.clearButton !== true) {
+          if (this.disabled === false) {
+            const regex = new RegExp(this.pattern)
+            const regexValidation = regex.test(this.value)
+            this.$emit('update:valid', regexValidation)
+            return regexValidation
+          }
+          return undefined
         }
-        return undefined
+        if (this.value !== 'SN') {
+          this.closeButton = true
+        }
+      } else if (this.clearButton !== true) {
+        this.$emit('update:resetValidation', false)
       }
     },
     disabled() {
-      if (this.resetValidation === false) {
+      if (this.resetValidation === false && this.clearButton === true) {
         this.handleFocusOut()
       }
     },

@@ -1,34 +1,86 @@
-.ventiqo-login-container{
-  padding: 0 !important;
-  margin: auto !important;
-  margin-top: 9vh !important;
-  height: 80vh;
-  border: 4px $yellow-1 solid;
-  border-radius: .625rem;
-  width: 30vw;
-
-  &::before{
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    filter: blur(10px);
-  }
-
-  &__title{
+.ventiqo-container {
+  display: flex;
+  justify-content: space-evenly;
+  background-size: cover;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  
+  .ventiqo-login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5vh 0 5vh 0;
+    justify-content: center;
+    border-right: 4px solid $yellow-1;
+    background: linear-gradient(180deg, $gray-3 10%, $black-1 70%);
+    width: 50%;
 
-    &-yellow{
-      color: $yellow-1;
-    }
-
-    h1 {
-      font-size: 3.125rem;
-    }
+    &__content{
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      width: 50%;
   
-    p {
-      font-size: 1.5625rem;
-      color: $gray-1;
+      &-yellow{
+        color: $yellow-1;
+
+        &-no-outline {
+          text-decoration: none;
+          color: $yellow-1;
+        }
+      }
+  
+      h1 {
+        margin: 0;
+        margin-bottom: 0.3125rem;
+        font-size: 2.5rem;
+      }
+    
+      p {
+        font-size: 1.5625rem;
+        color: $gray-1;
+      }
+
+      a {
+        color: $yellow-1;
+      }
+
+      &-username {
+        margin: 1rem;
+        width: 25vw;
+      }
+
+      &-password {
+        margin: 1rem;
+        width: 25vw;
+      }
+
+      &-btn-login {
+        margin: 1rem;
+        width: 25vw;
+      }
+    }
+  }
+  .ventiqo-logo-container {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/clouds.jpg');
+    background-size: cover;
+  }
+
+  &__btn {
+    &-anonimous{
+      border: 0 !important;
+      background: linear-gradient(to right, $orange-1, $yellow-2);
+      line-height: 1.625rem;
+      width: 25vw;
+    
+      &:hover {
+        transform: translate3d(0, -5%, 0);
+        border: 0 !important;
+      }
     }
   }
 }
