@@ -1,37 +1,20 @@
 <template>
-  <div :class="['home', theme]">
-    <login-cotainer>
-      <ventiqo-button
-        class="button-google"
-      >
-        Log-in with Google
-      </ventiqo-button>
-      <ventiqo-button
-        class="button-login"
-      >
-        Login
-      </ventiqo-button>
-    </login-cotainer>
-    <h1>Welcome to ventiqo</h1>
-    <p>Please verify that you are not a robot:</p>
-    <button @click="verifyCaptcha">Verify</button>
-    <button :disabled="!verified" @click="goToTimeline">Go to Timeline</button>
-  </div>
+  <LoginCotainer :class="['home', theme]">
+  </LoginCotainer>
 </template>
 
 <script>
 import { ref, inject } from 'vue';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import axios from 'axios';
-import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
 import LoginCotainer from '@/components/login-container/vue/LoginContainer.vue';
 
 export default {
   components: {
-    VentiqoButton,
     LoginCotainer,
   },
   setup() {
+    window.top.document.title = 'Log In'
     const theme = inject('theme')
     const commonPath = 'http://localhost:3000';
     const verified = ref(false);
