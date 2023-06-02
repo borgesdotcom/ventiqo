@@ -64,6 +64,14 @@
       &:focus {
         outline: none !important;
       }
+
+      &:-webkit-autofill {
+        border-radius: 1.875rem;
+        border: 0.0625rem solid $yellow-1 !important;
+        -webkit-box-shadow: 0 0 0 1000px $gray-3 inset;
+        -webkit-text-fill-color: $white-1;
+        transition: background-color 5000s ease-in-out 0s;
+      }
     }
 
     &.invalid {
