@@ -3,13 +3,12 @@
     padding: 1.175rem 1.175rem !important;
     border-radius: 1.875rem !important;
     text-align: center !important;
-    border: 0.1875rem solid $yellow-1 !important;
+    border: .15rem solid $yellow-1 !important;
     font-size: 1.25rem !important;
     font-weight: 600;
     transition: all 0.3s ease-out !important;
 
     &:hover{
-        border: $orange-1 .1875rem solid !important;
         background-color: rgba(30, 32, 39, 0.5);
     }
 
