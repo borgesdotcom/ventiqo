@@ -2,7 +2,7 @@
     <div class="theme-switch">
         <div class="switch">
             <input type="checkbox" id="theme-switch" :checked="isDark" @change="toggleTheme">
-            <label for="theme-switch" class="slider round">
+            <label for="theme-switch" class="slider round" title="Mudar tema">
                 <span class="slider round">
                     <span class="icon-wrapper">
                         <span class="icon moon-icon" v-if="isDark">🌙</span>
