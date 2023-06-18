@@ -19,6 +19,7 @@
         :type="type"
         :placeholder="placeholder"
         :required="required"
+        :maxlength="maxlength"
         :disabled="disabled"
         :autocomplete="autocomplete"
         @input="$emit('input', $event)"
@@ -114,6 +115,11 @@ export default {
       type: Boolean,
       required: false,
       default: () => false,
+    },
+    maxlength: {
+      type: Number,
+      required: false,
+      default: () => null,
     },
     msgAlertValid: {
       type: String,

@@ -1,0 +1,49 @@
+.home {
+  background-color: $black-1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.centered-block {
+  width: 900px;
+  height: 100vh;
+  background-color: $black-1;
+  text-align: center;
+}
+
+.logo {
+  width: 180px;
+}
+
+.desktop-logo {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.mobile-logo {
+  display: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1068px) {
+  .centered-block {
+    width: 100%;
+  }
+
+  .home {
+    padding: 0px 10px 0px 10px;
+  }
+
+  .desktop-logo {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: block;
+  }
+}

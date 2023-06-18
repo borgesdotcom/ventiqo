@@ -35,6 +35,7 @@
 
 <script>
 import { ref, computed, inject } from 'vue';
+import { useRouter } from 'vue-router';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import VentiqoButton from '@/components/button/vue/VentiqoButton.vue';
 import VentiqoInput from '@/components/input/vue/VentiqoInput.vue';
@@ -46,7 +47,8 @@ export default {
     VentiqoInput,
   },
   setup() {
-    const theme = inject('theme')
+    const router = useRouter();
+    const theme = inject('theme');
     const mouseX = ref(0);
     const mouseY = ref(0);
     const buttonState = ref('initial');
@@ -60,7 +62,6 @@ export default {
 
     const handleSubmit = async () => {
       await verifyCaptchaOnAuth();
-      console.log('ENTROU?', verified.value)
     }
 
     const verifyCaptchaOnAuth = async () => {
@@ -72,6 +73,9 @@ export default {
         if (isSuccess) {
           verified.value = true;
           buttonState.value = 'success';
+          setTimeout(() => {
+            router.push('/home');
+          }, 100)
         } else {
           buttonState.value = 'initial';
         }
