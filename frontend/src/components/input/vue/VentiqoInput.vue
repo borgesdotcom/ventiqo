@@ -1,16 +1,14 @@
 <template>
   <div>
-    <label
-      :for="name"
-      :class="[
-        'ventiqo-input',
-        type,
-        {
-          valid: validClass,
-          invalid: invalidClass,
-          'has-content': value,
-          disabled: disabled,
-        },
+    <label :for="name" :class="[
+      'ventiqo-input',
+      type,
+      {
+        valid: validClass,
+        invalid: invalidClass,
+        'has-content': value,
+        disabled: disabled,
+      },
       ]"
     >
       <input
@@ -30,11 +28,11 @@
       <div
         :id="`input-label-${name}`"
         :class="['ventiqo-input-label',
-                  {
-                    invalid: invalidClass,
-                    valid: validClass,
-                    default: pattern && required === false,
-                  },
+        {
+          invalid: invalidClass,
+          valid: validClass,
+          default: pattern && required === false,
+        },
                 ]"
       >
         {{ label }}
@@ -140,6 +138,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    placeholder: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    autocomplete: {
+      type: String,
+      required: false,
+      default: 'off',
+    },
   },
   data() {
     return {
@@ -176,7 +184,7 @@ export default {
     iconValidation() {
       return (
         (this.required === true
-         || (this.required === false && this.value !== ''))
+          || (this.required === false && this.value !== ''))
         && (this.pattern || (this.required && this.value !== 'SN'))
         && (this.valid === false || this.valid === true)
         && this.closeButton === false
@@ -186,7 +194,7 @@ export default {
     invalidClass() {
       return (
         (this.required === true
-         || (this.required === false && this.value !== ''))
+          || (this.required === false && this.value !== ''))
         && this.valid != null
         && !this.valid
         && this.closeButton === false
@@ -196,7 +204,7 @@ export default {
     validClass() {
       return (
         (this.required === true
-         || (this.required === false && this.value !== ''))
+          || (this.required === false && this.value !== ''))
         && this.valid
         && this.closeButton === false
         && this.disabled === false
