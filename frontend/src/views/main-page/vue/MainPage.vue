@@ -2,6 +2,7 @@
     <div class="home" :class="theme">
         <img class="logo desktop-logo" src="../../../assets/logomarca.png" alt="logo" />
         <div class="centered-block">
+            <p>caralhooo</p>
             <post-container></post-container>
         </div>
         <img class="logo mobile-logo" src="../../../assets/logomarca.png" alt="logo" />
